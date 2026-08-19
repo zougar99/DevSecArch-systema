@@ -18,8 +18,11 @@ wpa_supplicant
 openssh
 rsync
 
-# Desktop environment
-gnome
+# Desktop environment (minimal gnome)
+gnome-shell
+gnome-session
+gnome-settings-daemon
+gnome-control-center
 gnome-tweaks
 gnome-shell-extensions
 gdm
