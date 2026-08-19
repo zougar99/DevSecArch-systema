@@ -65,7 +65,7 @@ qt6-declarative
 # System tools
 htop
 btop
-neofetch
+
 fastfetch
 man-pages
 reflector
@@ -80,5 +80,5 @@ archiso
 xdg-utils
 xdg-user-dirs
 
-# AUR helper
-yay
+# AUR helper (install after first boot)
+# yay
