@@ -1,0 +1,31 @@
+name: Build DevSecArch ISO
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install archiso
+        run: |
+          sudo pacman -Syu --noconfirm
+          sudo pacman -S --noconfirm archiso
+
+      - name: Build ISO
+        run: |
+          sudo mkarchiso -v -w work -o out iso/profile
+
+      - name: Upload ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: DevSecArch-${{ github.sha }}
+          path: out/*.iso
+          retention-days: 30
