@@ -10,4 +10,4 @@ bootmodes=("uefi.grub")
 arch="x86_64"
 pacman_conf="pacman.conf"
 airootfs_image_type="squashfs"
-airootfsCompressionOptions=("-comp" "zstd" "-Xcompression-level" "19")
+airootfsCompressionOptions=("-comp" "gzip")

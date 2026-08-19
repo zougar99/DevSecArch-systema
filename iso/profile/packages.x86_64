@@ -55,7 +55,7 @@ firefox
 nautilus
 
 # Text editor
-code
+gedit
 
 # Qt6
 qt6-base
