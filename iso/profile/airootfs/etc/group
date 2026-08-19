@@ -1,0 +1,11 @@
+root:x:0:root
+devsec:x:1000:
+wheel:x:999:devsec
+docker:x:998:devsec
+sys:x:3:
+network:x:19:
+floppy:x:11:
+scanner:x:13:
+power:x:90:
+systemd-coredump:x:998:
+nobody:x:65534:

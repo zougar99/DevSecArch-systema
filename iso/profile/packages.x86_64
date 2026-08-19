@@ -1,0 +1,82 @@
+# Base system
+base
+linux
+linux-firmware
+linux-headers
+nano
+vim
+sudo
+git
+curl
+wget
+base-devel
+
+# Networking
+networkmanager
+iwd
+wpa_supplicant
+openssh
+rsync
+
+# Desktop environment
+gnome
+gnome-tweaks
+gnome-shell-extensions
+gdm
+
+# Display server
+xorg-server
+xorg-xinit
+xorg-xrandr
+xorg-xbacklight
+
+# Audio
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+
+# Graphics
+mesa
+vulkan-radeon
+vulkan-intel
+# nvidia
+# nvidia-utils
+
+# Terminal
+alacritty
+tmux
+zsh
+
+# Browser
+firefox
+
+# File manager
+nautilus
+
+# Text editor
+code
+
+# Qt6
+qt6-base
+qt6-wayland
+qt6-declarative
+
+# System tools
+htop
+btop
+neofetch
+fastfetch
+man-pages
+reflector
+
+# Installer
+archinstall
+
+# Live ISO
+archiso
+xdg-utils
+xdg-user-dirs
+
+# AUR helper
+yay
