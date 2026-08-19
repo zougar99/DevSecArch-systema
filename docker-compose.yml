@@ -1,0 +1,11 @@
+services:
+  devsecarch:
+    build: .
+    container_name: devsecarch-dev
+    volumes:
+      - .:/home/devsec/DevSecArch-systema
+    ports:
+      - "3000:3000"
+    privileged: true
+    stdin_open: true
+    tty: true
