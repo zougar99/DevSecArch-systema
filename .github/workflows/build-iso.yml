@@ -8,20 +8,21 @@ on:
 jobs:
   build-iso:
     runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
     timeout-minutes: 120
 
     steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm archiso git
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install archiso
-        run: |
-          sudo pacman -Syu --noconfirm
-          sudo pacman -S --noconfirm archiso
-
       - name: Build ISO
-        run: |
-          sudo mkarchiso -v -w work -o out iso/profile
+        run: mkarchiso -v -w work -o out iso/profile
 
       - name: Upload ISO
         uses: actions/upload-artifact@v4
