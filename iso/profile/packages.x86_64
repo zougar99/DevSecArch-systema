@@ -71,11 +71,8 @@ man-pages
 reflector
 
 # Bootloaders
-
-
-
-
-# Installer
+grub
+efibootmgr# Installer
 archinstall
 
 # Live ISO
