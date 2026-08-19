@@ -74,8 +74,10 @@ man-pages
 reflector
 
 # Bootloaders
+syslinux
 grub
-efibootmgr# Installer
+efibootmgr
+memtest86+# Installer
 archinstall
 
 # Live ISO
