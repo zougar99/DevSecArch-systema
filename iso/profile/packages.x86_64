@@ -2,30 +2,19 @@
 base
 linux
 linux-firmware
-linux-headers
 nano
 vim
 sudo
 git
 curl
 wget
-base-devel
 
 # Networking
 networkmanager
-iwd
-wpa_supplicant
 openssh
-rsync
 
-# Desktop environment (Deepin DDE)
+# Desktop environment (Deepin DDE - group includes all)
 deepin
-deepin-terminal
-deepin-editor
-deepin-screenshot
-deepin-picker
-deepin-calculator
-deepin-control-center
 
 # Display manager
 lightdm
@@ -34,8 +23,6 @@ lightdm-deepin-greeter
 # Display server
 xorg-server
 xorg-xinit
-xorg-xrandr
-xorg-xbacklight
 
 # Audio
 pipewire
@@ -43,54 +30,24 @@ pipewire-pulse
 pipewire-alsa
 pipewire-jack
 wireplumber
-pavucontrol
 
 # Graphics
 mesa
-vulkan-radeon
-vulkan-intel
-
-# Terminal
-alacritty
-tmux
-zsh
 
 # Browser
 firefox
 
-# File manager
-nautilus
-
-# Text editor
-gedit
-
 # Office
 libreoffice-fresh
-libreoffice-fresh-ar
-
-# PDF
-evince
-
-# Qt6
-qt6-base
-qt6-wayland
-qt6-declarative
 
 # System tools
 htop
-btop
 fastfetch
-man-pages
-reflector
 
 # Bootloaders
 syslinux
 grub
 efibootmgr
-memtest86+
-
-# Installer
-archinstall
 
 # Live ISO
 archiso
