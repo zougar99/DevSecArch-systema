@@ -21,23 +21,11 @@ rsync
 # Desktop environment (Deepin DDE)
 deepin
 deepin-terminal
-deepin-file-manager
 deepin-editor
 deepin-screenshot
 deepin-picker
 deepin-calculator
-deepin-system-monitor
 deepin-control-center
-deepin-launcher
-deepin-dock
-deepin-grandline
-deepin-deepinid
-deepin-auth
-deepin-pw-check
-dde-session
-dde-session-shell
-dde-session-ui
-dde-session-utils
 
 # Display manager
 lightdm
