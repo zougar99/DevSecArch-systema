@@ -11,4 +11,4 @@ bootmodes=("bios.syslinux" "uefi.grub")
 arch="x86_64"
 pacman_conf="pacman.conf"
 airootfs_image_type="squashfs"
-airootfsCompressionOptions=("-comp" "gzip")
+airootfsCompressionOptions=("-comp" "xz" "-Xbcj" "x86")
