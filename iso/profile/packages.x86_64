@@ -42,8 +42,6 @@ pipewire
 pipewire-pulse
 pipewire-alsa
 wireplumber
-pulseaudio
-pulseaudio-alsa
 pavucontrol
 
 # Graphics
