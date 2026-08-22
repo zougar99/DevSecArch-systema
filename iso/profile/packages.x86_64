@@ -43,8 +43,6 @@ wireplumber
 mesa
 vulkan-radeon
 vulkan-intel
-# nvidia
-# nvidia-utils
 
 # Terminal
 alacritty
@@ -60,6 +58,13 @@ nautilus
 # Text editor
 gedit
 
+# Office
+libreoffice-fresh
+libreoffice-fresh-ar
+
+# PDF
+evince
+
 # Qt6
 qt6-base
 qt6-wayland
@@ -68,7 +73,6 @@ qt6-declarative
 # System tools
 htop
 btop
-
 fastfetch
 man-pages
 reflector
@@ -77,13 +81,12 @@ reflector
 syslinux
 grub
 efibootmgr
-memtest86+# Installer
+memtest86+
+
+# Installer
 archinstall
 
 # Live ISO
 archiso
 xdg-utils
 xdg-user-dirs
-
-# AUR helper (install after first boot)
-# yay
