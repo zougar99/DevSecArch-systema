@@ -25,9 +25,18 @@ jobs:
       - name: Build ISO
         run: mkarchiso -v -w work -o out iso/profile
 
-      - name: Upload ISO
-        uses: actions/upload-artifact@v4
+      - name: Get version
+        id: version
+        run: echo "date=$(date +'%Y.%m.%d')" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: DevSecArch-${{ github.sha }}
-          path: out/*.iso
-          retention-days: 30
+          tag_name: build-${{ github.sha }}
+          name: DevSecArch ${{ steps.version.outputs.date }}
+          files: out/*.iso
+          make_latest: true
+          body: |
+            DevSecArch Linux ISO
+            Built: ${{ github.sha }}
+            Date: ${{ steps.version.outputs.date }}
