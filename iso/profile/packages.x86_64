@@ -17,43 +17,8 @@ openssh
 xorg-server
 xorg-xinit
 
-# Deepin DDE (core only - no group)
-deepin-daemon
-deepin-session
-deepin-shell
-deepin-desktop-base
-deepin-desktop-schemas
-deepin-desktop-theme
-deepin-control-center
-deepin-file-manager
-deepin-terminal
-deepin-editor
-deepin-system-monitor
-deepin-calculator
-deepin-picker
-deepin-screensaver
-deepin-wallpapers
-deepin-icon-theme
-deepin-gtk-theme
-deepin-polkit-agent
-deepin-pw-check
-deepin-launcher
-deepin-menu
-deepin-api
-deepin-app-services
-deepin-application-manager
-deepin-network-core
-deepin-turbo
-deepin-services
-deepin-qt5integration
-deepin-qt5platform-plugins
-deepin-qt6integration
-deepin-qt6platform-plugins
-dtkcommon
-dtkcore
-dtkgui
-dtkwidget
-ddm
+# Desktop environment (Deepin DDE)
+deepin
 
 # Display manager
 lightdm
@@ -67,12 +32,6 @@ wireplumber
 
 # Graphics
 mesa
-
-# Browser
-firefox
-
-# System tools
-htop
 
 # Bootloaders
 syslinux

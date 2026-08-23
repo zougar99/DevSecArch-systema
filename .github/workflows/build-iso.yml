@@ -17,8 +17,9 @@ jobs:
     timeout-minutes: 120
 
     steps:
-      - name: Install dependencies
+      - name: Free disk space
         run: |
+          rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc || true
           pacman -Syu --noconfirm
           pacman -S --noconfirm archiso git grub dosfstools mtools syslinux
 
