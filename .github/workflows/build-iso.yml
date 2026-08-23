@@ -21,20 +21,13 @@ jobs:
         run: |
           rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc || true
           pacman -Syu --noconfirm
-          pacman -S --noconfirm archiso git grub dosfstools mtools syslinux xz
+          pacman -S --noconfirm archiso git grub dosfstools mtools syslinux
 
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Build ISO
         run: mkarchiso -v -w work -o out iso/profile
-
-      - name: Compress ISO
-        run: |
-          cd out
-          for iso in *.iso; do
-            xz -9 --threads=0 "$iso"
-          done
 
       - name: Get version
         id: version
@@ -45,10 +38,9 @@ jobs:
         with:
           tag_name: build-${{ github.sha }}
           name: DevSecArch ${{ steps.version.outputs.date }}
-          files: out/*.iso.xz
+          files: out/*.iso
           make_latest: true
           body: |
             DevSecArch Linux - Deepin Desktop
             Built: ${{ github.sha }}
             Date: ${{ steps.version.outputs.date }}
-            Extract .xz to get .iso
