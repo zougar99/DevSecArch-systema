@@ -1,9 +1,8 @@
 [Desktop Entry]
+Type=Application
 Name=DevSecArch Installer
-Comment=Install DevSecArch Linux to your system
-Exec=sudo archinstall --gui
+Comment=Install DevSecArch Linux
+Exec=/usr/bin/archinstall
 Icon=system-software-install
 Terminal=true
-Type=Application
 Categories=System;
-StartupNotify=true
