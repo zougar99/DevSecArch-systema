@@ -12,7 +12,7 @@ IOSDock::IOSDock(QWidget *parent)
 
     dockContainer = new QWidget(this);
     dockContainer->setStyleSheet(
-        "QWidget { background-color: rgba(30,30,35,80%); "
+        "QWidget { background-color: rgba(18,24,43,72%); "
         "border-radius: 22px; border: 1px solid rgba(255,255,255,15%); }"
     );
 

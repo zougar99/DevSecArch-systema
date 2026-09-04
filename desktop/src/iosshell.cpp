@@ -27,7 +27,7 @@ IOSShell::IOSShell(QWidget *parent)
 
 void IOSShell::setupUI()
 {
-    setStyleSheet("IOSShell { background-color: #0f2027; }");
+    setStyleSheet("IOSShell { background-color: #0B1020; }");
 
     // Home icon button for control center access (top-right of status bar area)
     mainLayout = new QVBoxLayout(this);

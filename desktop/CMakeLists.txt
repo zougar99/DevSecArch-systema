@@ -61,6 +61,7 @@ set(HEADERS
 add_executable(${PROJECT_NAME}
     ${SOURCES}
     ${HEADERS}
+    resources.qrc
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE

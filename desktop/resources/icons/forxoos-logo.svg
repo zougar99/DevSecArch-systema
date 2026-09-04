@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="55%" stop-color="#FF6B2C"/>
+      <stop offset="100%" stop-color="#C2410C"/>
+    </linearGradient>
+    <linearGradient id="ice" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#5EEAD4"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="#0B1020"/>
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="none" stroke="#FF6B2C" stroke-width="8" opacity="0.35"/>
+  <path fill="url(#g)" d="M256 72c72 28 128 28 168 28v132c0 92-56 160-168 208C144 392 88 324 88 232V100c40 0 96 0 168-28z"/>
+  <path fill="#FFB347" d="M168 118l52 78-78 8z"/>
+  <path fill="#FFB347" d="M344 118l-52 78 78 8z"/>
+  <path fill="#0B1020" d="M214 168h92c8 0 14 6 14 14v22h-70v28h58v24h-58v58h-36V182c0-8 6-14 14-14z"/>
+  <path fill="none" stroke="url(#ice)" stroke-width="10" stroke-linecap="round"
+        d="M156 400c32 18 64 28 100 28s68-10 100-28"/>
+</svg>

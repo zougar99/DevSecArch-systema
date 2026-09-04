@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="theme.qss">resources/theme.qss</file>
+        <file alias="icons/forxoos-logo.svg">resources/icons/forxoos-logo.svg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ForxoOS
+Name[ar]=فوركس أو إس
+Comment=ForxoOS iOS Desktop Shell
+Exec=/usr/bin/ForxoOS-Desktop
+Icon=/usr/share/pixmaps/forxoos.svg
+Terminal=false
+Categories=System;Utility;
+StartupNotify=false

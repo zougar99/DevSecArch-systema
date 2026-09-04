@@ -1,0 +1,137 @@
+/* ==========================================================
+   ForxoOS Deepin-Style Qt6 Theme (Glassmorphism)
+   Palette: Void #0B1020 · Navy #12182B · Fox #FF6B2C
+            Ember #FFB347 · Ice #5EEAD4 · Text #F4F7FB
+   ========================================================== */
+
+QMainWindow, QWidget {
+    background-color: #0B1020;
+    color: #F4F7FB;
+    font-family: "Noto Sans", "Segoe UI", sans-serif;
+    font-size: 10pt;
+}
+
+QFrame#Card, QGroupBox {
+    background-color: rgba(18, 24, 43, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1e293b, stop:1 #273548);
+    color: #F4F7FB;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #FFB347, stop:1 #FF6B2C);
+    color: #0B1020;
+    border: 1px solid #FF6B2C;
+}
+
+QPushButton:pressed {
+    background-color: #C2410C;
+    color: #F4F7FB;
+}
+
+QPushButton[primary="true"] {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #FFB347, stop:1 #FF6B2C);
+    color: #0B1020;
+    border: none;
+}
+
+QPushButton[destructive="true"] {
+    background: #E11D48;
+    color: #F4F7FB;
+    border: none;
+}
+
+QLineEdit, QTextEdit, QComboBox, QSpinBox, QDoubleSpinBox {
+    background-color: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #F4F7FB;
+    selection-background-color: #FF6B2C;
+    selection-color: #0B1020;
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #FF6B2C;
+    background-color: rgba(15, 23, 42, 1.0);
+}
+
+QListWidget, QTreeView, QListView {
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    outline: none;
+    padding: 5px;
+    color: #F4F7FB;
+}
+
+QListWidget::item {
+    background: transparent;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 4px;
+    color: #8B93A7;
+}
+
+QListWidget::item:selected {
+    background: rgba(255, 107, 44, 0.18);
+    color: #FFB347;
+    border: 1px solid rgba(255, 107, 44, 0.3);
+}
+
+QProgressBar {
+    background-color: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    color: #F4F7FB;
+    font-weight: bold;
+}
+
+QProgressBar::chunk {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #FFB347, stop:1 #FF6B2C);
+    border-radius: 7px;
+}
+
+QTabWidget::pane {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(18, 24, 38, 0.8);
+    border-radius: 12px;
+}
+
+QTabBar::tab {
+    background: transparent;
+    color: #8B93A7;
+    padding: 10px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-right: 4px;
+}
+
+QTabBar::tab:selected {
+    background: rgba(255, 107, 44, 0.15);
+    color: #FF6B2C;
+    border-bottom: 2px solid #FF6B2C;
+}
+
+QLabel { color: #F4F7FB; }
+
+QStatusBar { background-color: #12182B; color: #8B93A7; }
+
+QToolTip {
+    background-color: #12182B;
+    color: #F4F7FB;
+    border: 1px solid #FF6B2C;
+    border-radius: 6px;
+    padding: 6px;
+}

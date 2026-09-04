@@ -1,20 +1,18 @@
-  ______                    ______   ____  
- |  ____|                  / ____ \ |  _ \ 
- | |__     ___   _ __  __ | |  | | | |_) |
- |  __|   / _ \ | '__|/ _ \| |  | | |  _ < 
- | |     |  __/ | |  | (_) | |__| | | |_) |
- |_|      \___| |_|   \___/ \_____/  |____/
-                                    
-   ForxoOS - Arch Linux + Deepin Desktop
-   Version 2.0.0 (Rolling)
+  ███████╗ ██████╗ ██████╗ ██╗  ██╗ ██████╗  ██████╗ ███████╗
+  ██╔════╝██╔═══██╗██╔══██╗╚██╗██╔╝██╔═══██╗██╔═══██╗██╔════╝
+  █████╗  ██║   ██║██████╔╝ ╚███╔╝ ██║   ██║██║   ██║███████╗
+  ██╔══╝  ██║   ██║██╔══██╗ ██╔██╗ ██║   ██║██║   ██║╚════██║
+  ██║     ╚██████╔╝██║  ██║██╔╝ ██╗╚██████╔╝╚██████╔╝███████║
+  ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝
 
-   Quick Start:
-   - Open ForxoOS Store from desktop to install apps
-   - Run 'forxoinstall' to install tools from terminal
-   - Run 'forxoupdate' to update system
-   - Double-click .exe files to run via Wine/Bottles
+  [ #FF6B2C Secure #F4F7FB • #5EEAD4 Fast #F4F7FB • Deepin Experience • Windows Apps Ready #8B93A7 ]
+  ForxoOS 2.0.0 (Arch Linux) — Your machine. Your rules.
 
-   OS: ForxoOS (Arch Linux) - Unofficial Arch derivative
-   Desktop: Deepin DDE
+  Quick Start:
+  - Open ForxoOS Store from desktop to install apps
+  - Run 'forxoinstall' to install tools from terminal
+  - Run 'forxoupdate' to update system
+  - Double-click .exe files to run via Wine/Bottles
+  - Run 'install-apk app.apk' for Android apps (Waydroid)
 
-   Default live user: devsec
+  Default live user: devsec

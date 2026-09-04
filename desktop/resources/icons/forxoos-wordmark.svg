@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" width="720" height="160">
+  <rect width="720" height="160" fill="#0B1020"/>
+  <g transform="translate(36,16)">
+    <rect x="0" y="0" width="128" height="128" rx="28" fill="#FF6B2C"/>
+    <path fill="#0B1020" d="M64 14c26 10 46 10 60 10v42c0 30-19 53-60 70-41-17-60-40-60-70V24c14 0 34 0 60-10z"/>
+    <path fill="#FFB347" d="M32 26l18 28-28 3z"/>
+    <path fill="#FFB347" d="M96 26l-18 28 28 3z"/>
+  </g>
+  <text x="188" y="96" font-family="Sora, Outfit, sans-serif" font-size="64" font-weight="700" fill="#F4F7FB">Forxo</text>
+  <text x="388" y="96" font-family="Sora, Outfit, sans-serif" font-size="64" font-weight="600" fill="#FF6B2C">OS</text>
+  <text x="188" y="132" font-family="Noto Sans, sans-serif" font-size="16" fill="#8B93A7" letter-spacing="4">ARCH · DEEPIN · zougar99</text>
+</svg>

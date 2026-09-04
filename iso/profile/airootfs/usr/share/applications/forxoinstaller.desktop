@@ -3,6 +3,6 @@ Type=Application
 Name=ForxoOS Installer
 Comment=Install ForxoOS Linux
 Exec=/usr/bin/archinstall
-Icon=system-software-install
+Icon=/usr/share/pixmaps/forxoos.svg
 Terminal=true
 Categories=System;
