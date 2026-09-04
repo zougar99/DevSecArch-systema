@@ -54,7 +54,7 @@ detect_disk() {
     echo ""
     echo -e "${RED}  *** THIS WILL ERASE ALL DATA ON $DISK ***${NC}"
     read -rp "  Type ERASE to confirm: " confirm
-    [[ "$confirm" == "ERASE" ]] || { echo "Aborted."; exit 0; }
+    [[ "$confirm" == "ERASE" || "$confirm" == "erase" ]] || { echo "Aborted."; exit 0; }
 }
 
 detect_efi() {
