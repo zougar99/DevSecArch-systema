@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(ForxoOS-Desktop VERSION 1.0.0 LANGUAGES CXX)
+project(ForxoOS-Desktop VERSION 2.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -30,6 +30,13 @@ set(SOURCES
     src/settings.cpp
     src/about.cpp
     src/forxostore.cpp
+    src/iosstatusbar.cpp
+    src/iosdock.cpp
+    src/ioshome.cpp
+    src/ioscontrolcenter.cpp
+    src/ioslockscreen.cpp
+    src/iossettings.cpp
+    src/iosshell.cpp
 )
 
 set(HEADERS
@@ -42,6 +49,13 @@ set(HEADERS
     src/settings.h
     src/about.h
     src/forxostore.h
+    src/iosstatusbar.h
+    src/iosdock.h
+    src/ioshome.h
+    src/ioscontrolcenter.h
+    src/ioslockscreen.h
+    src/iossettings.h
+    src/iosshell.h
 )
 
 add_executable(${PROJECT_NAME}

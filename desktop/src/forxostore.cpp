@@ -70,6 +70,11 @@ static QList<PackageInfo> allPackages = {
     {"Neofetch", "System info", "neofetch", "System", false},
     {"Timeshift", "System restore", "timeshift", "System", false},
     {"GParted", "Partition editor", "gparted", "System", false},
+
+    // Android
+    {"Waydroid", "Android container for .apk apps", "waydroid", "Android", false},
+    {"ADB", "Android Debug Bridge", "android-tools", "Android", false},
+    {"Scrcpy", "Mirror Android screen to desktop", "scrcpy", "Android", false},
 };
 
 ForxoStore::ForxoStore(QWidget *parent)
@@ -109,7 +114,7 @@ void ForxoStore::setupUI()
         "QListWidget::item { padding: 10px; border-radius: 5px; }"
         "QListWidget::item:selected { background-color: #2a82da; }"
     );
-    categoryList->addItems({"All", "Development", "Cybersecurity", "Terminal", "Multimedia", "Gaming", "System"});
+    categoryList->addItems({"All", "Development", "Cybersecurity", "Terminal", "Multimedia", "Gaming", "System", "Android"});
     connect(categoryList, &QListWidget::currentTextChanged, this, &ForxoStore::showCategory);
 
     catLayout->addWidget(categoryList);
@@ -230,7 +235,7 @@ void ForxoStore::installPackage()
     QString pac = sel->data(Qt::UserRole).toString();
 
     int ret = QMessageBox::question(this, "Install",
-        QString("Install %1?\n\nThis will run: sudo pacman -S %2")
+        QString("Install %1?\n\nThis will install: %2")
             .arg(pkgName, pac),
         QMessageBox::Yes | QMessageBox::No);
     if (ret != QMessageBox::Yes) return;
@@ -238,7 +243,6 @@ void ForxoStore::installPackage()
     progressBar->setRange(0, 0);
     progressBar->setVisible(true);
     statusLabel->setText("Installing " + pkgName + "...");
-    progressBar->setValue(0);
 
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this,
         [this, pkgName](int code, QProcess::ExitStatus) {
@@ -252,6 +256,17 @@ void ForxoStore::installPackage()
     }, Qt::UniqueConnection);
 
     QString redirect = "2>&1 </dev/null";
+
+    // Waydroid is AUR-only: use yay/paru if available, else show message.
+    if (pac == "waydroid") {
+        runCommand("bash -c 'if command -v yay >/dev/null; then yay -S --noconfirm waydroid; "
+                   "elif command -v paru >/dev/null; then paru -S --noconfirm waydroid; "
+                   "else echo \"Waydroid is in AUR. Install manually: run sudo bash modules/waydroid.sh\"; "
+                   "fi' " + redirect);
+        return;
+    }
+
+    // android-tools (ADB) and scrcpy are in extra/community → pacman works.
     runCommand("sudo pacman -S --needed --noconfirm " + pac + " " + redirect);
 }
 
