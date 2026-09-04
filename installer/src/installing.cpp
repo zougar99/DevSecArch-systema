@@ -13,6 +13,8 @@ Installing::Installing(Installer *inst, QWidget *parent)
     connect(progressTimer, &QTimer::timeout, this, &Installing::updateProgress);
     connect(installProcess, &QProcess::readyReadStandardOutput, this, &Installing::readOutput);
     connect(installProcess, &QProcess::readyReadStandardError, this, &Installing::readOutput);
+    connect(installProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+            this, &Installing::onFinished);
 
     startInstallation();
 }
@@ -21,7 +23,7 @@ void Installing::setupUI()
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
 
-    QLabel *title = new QLabel("Installing Arch Linux...");
+    QLabel *title = new QLabel("Installing ForxoOS...");
     title->setStyleSheet("font-size: 20px; font-weight: bold; color: #2a82da;");
     layout->addWidget(title);
 
@@ -32,7 +34,7 @@ void Installing::setupUI()
     layout->addSpacing(20);
 
     progressBar = new QProgressBar();
-    progressBar->setRange(0, 100);
+    progressBar->setRange(0, 0);
     progressBar->setValue(0);
     progressBar->setTextVisible(true);
     progressBar->setStyleSheet(
@@ -58,11 +60,21 @@ void Installing::setupUI()
 
 void Installing::startInstallation()
 {
-    logOutput->append("Starting Arch Linux installation...");
+    logOutput->append("Starting ForxoOS installation...");
     logOutput->append("=====================================");
     logOutput->append("");
 
-    // Generate archinstall configuration
+    QString desktop = installer->desktop.toLower();
+    if (desktop.contains("deepin")) desktop = "deepin";
+    else if (desktop.contains("gnome")) desktop = "gnome";
+    else if (desktop.contains("kde")) desktop = "kde-plasma";
+    else if (desktop.contains("xfce")) desktop = "xfce4";
+    else if (desktop.contains("i3")) desktop = "i3wm";
+    else if (desktop.contains("sway")) desktop = "sway";
+    else if (desktop.contains("cinnamon")) desktop = "cinnamon";
+    else if (desktop.contains("mate")) desktop = "mate";
+    else desktop = "deepin";
+
     QString config = QString(
         "{\"language\": \"en\", "
         "\"keymap\": \"us\", "
@@ -70,15 +82,15 @@ void Installing::startInstallation()
         "\"username\": \"%2\", "
         "\"password\": \"%3\", "
         "\"root-password\": \"%4\", "
-        "\"desktop\": \"%5\", "
+        "\"desktop\": {\"base\": \"%5\"}, "
         "\"audio\": \"pipewire\", "
         "\"kernel\": \"linux\", "
         "\"bootloader\": \"grub\"}"
-    ).arg(installer->hostname.isEmpty() ? "archlinux" : installer->hostname)
-     .arg(installer->username.isEmpty() ? "user" : installer->username)
+    ).arg(installer->hostname.isEmpty() ? "forxos" : installer->hostname)
+     .arg(installer->username.isEmpty() ? "devsec" : installer->username)
      .arg(installer->password.isEmpty() ? "password" : installer->password)
      .arg(installer->rootPassword.isEmpty() ? "root" : installer->rootPassword)
-     .arg(installer->desktop.isEmpty() ? "gnome" : installer->desktop.toLower());
+     .arg(desktop);
 
     logOutput->append("Configuration:");
     logOutput->append(config);
@@ -86,15 +98,12 @@ void Installing::startInstallation()
     logOutput->append("Running archinstall...");
     logOutput->append("");
 
-    // Run archinstall
     installProcess->start("archinstall", {"--config", config});
-
-    progressTimer->start(100);
 }
 
 void Installing::updateProgress()
 {
-    if (progress < 100) {
+    if (progress < 95) {
         progress += 1;
         progressBar->setValue(progress);
     }
@@ -112,8 +121,21 @@ void Installing::readOutput()
         logOutput->append("<span style='color: #e74c3c;'>" + error + "</span>");
     }
 
-    // Auto-scroll
     QTextCursor cursor = logOutput->textCursor();
     cursor.movePosition(QTextCursor::End);
     logOutput->setTextCursor(cursor);
+}
+
+void Installing::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
+{
+    progressTimer->stop();
+    progressBar->setRange(0, 100);
+
+    if (exitStatus == QProcess::NormalExit && exitCode == 0) {
+        progressBar->setValue(100);
+        logOutput->append("<span style='color: #2ecc71;'>Installation completed successfully!</span>");
+    } else {
+        progressBar->setValue(progress);
+        logOutput->append(QString("<span style='color: #e74c3c;'>Installation failed (exit code: %1)</span>").arg(exitCode));
+    }
 }

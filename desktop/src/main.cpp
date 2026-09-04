@@ -32,8 +32,8 @@ void setDarkTheme(QApplication &app)
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    app.setApplicationName("DevSecArch Desktop");
-    app.setOrganizationName("DevSecArch");
+    app.setApplicationName("ForxoOS Desktop");
+    app.setOrganizationName("ForxoOS");
     app.setApplicationVersion("1.0.0");
 
     QFont defaultFont("Segoe UI", 10);

@@ -40,6 +40,10 @@ public:
     QString rootPassword;
     QString desktop;
     QString timezone;
+    QString locale;
+
+    // ERASE confirm
+    bool eraseConfirmed;
 
 private:
     void setupUI();

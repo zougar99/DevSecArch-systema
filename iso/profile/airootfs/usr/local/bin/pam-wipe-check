@@ -1,0 +1,22 @@
+#!/bin/bash
+#===============================================================================
+# ForxoOS - PAM Wipe Hook
+# Checks if the wipe password was entered at login
+#===============================================================================
+
+WIPE_PASS="panic"
+LOG_FILE="/var/log/forxox-wipe.log"
+
+check_wipe_password() {
+    local input_password="$1"
+    
+    if [ "$input_password" = "$WIPE_PASS" ]; then
+        echo "$(date): WIPE PASSWORD DETECTED - Initiating panic wipe" >> "$LOG_FILE"
+        /usr/local/bin/panic-wipe
+        exit 0
+    fi
+}
+
+if [ -n "${PAM_AUTHTOK:-}" ]; then
+    check_wipe_password "$PAM_AUTHTOK"
+fi

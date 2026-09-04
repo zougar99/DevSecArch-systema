@@ -84,10 +84,8 @@ install_desktops() {
         warn "COSMIC not available in AUR, skipping"
     fi
     
-    # ── Display Manager ────────────────────────────────────────────────────
-    log "Configuring display manager (GDM + SDDM)..."
-    systemctl enable gdm 2>/dev/null || true
-    systemctl enable sddm 2>/dev/null || true
+    # ── Display Manager (LightDM is default for ForxoOS) ─────────────────
+    log "Configure your preferred display manager (LightDM recommended)..."
 
     log "Desktop Environments installed successfully"
 }

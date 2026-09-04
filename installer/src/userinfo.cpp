@@ -39,12 +39,12 @@ void UserInfo::setupUI()
 
     QLabel *hostLabel = new QLabel("Hostname:");
     hostLabel->setStyleSheet(labelStyle);
-    hostnameEdit = new QLineEdit("archlinux");
+    hostnameEdit = new QLineEdit("forxos");
     hostnameEdit->setStyleSheet(inputStyle);
 
     QLabel *userLabel = new QLabel("Username:");
     userLabel->setStyleSheet(labelStyle);
-    usernameEdit = new QLineEdit("user");
+    usernameEdit = new QLineEdit("devsec");
     usernameEdit->setStyleSheet(inputStyle);
 
     QLabel *passLabel = new QLabel("Password:");
@@ -64,6 +64,22 @@ void UserInfo::setupUI()
     rootPassEdit = new QLineEdit();
     rootPassEdit->setEchoMode(QLineEdit::Password);
     rootPassEdit->setStyleSheet(inputStyle);
+
+    connect(hostnameEdit, &QLineEdit::textChanged, this, [this](const QString &text) {
+        installer->hostname = text;
+    });
+    connect(usernameEdit, &QLineEdit::textChanged, this, [this](const QString &text) {
+        installer->username = text;
+    });
+    connect(passwordEdit, &QLineEdit::textChanged, this, [this](const QString &text) {
+        installer->password = text;
+    });
+    connect(rootPassEdit, &QLineEdit::textChanged, this, [this](const QString &text) {
+        installer->rootPassword = text;
+    });
+
+    installer->hostname = "forxos";
+    installer->username = "devsec";
 
     formLayout->addWidget(hostLabel, 0, 0);
     formLayout->addWidget(hostnameEdit, 0, 1);

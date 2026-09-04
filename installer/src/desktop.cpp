@@ -32,18 +32,18 @@ void Desktop::setupUI()
 
     desktopGroup = new QButtonGroup(this);
 
-    QStringList names = {"GNOME", "KDE Plasma", "i3wm", "Sway", "XFCE", "Cinnamon", "MATE", "LXQt"};
+    QStringList names = {"Deepin DDE", "GNOME", "KDE Plasma", "i3wm", "Sway", "XFCE", "Cinnamon", "MATE"};
     QStringList descs = {
-        "Modern, clean desktop",
+        "Beautiful, modern desktop",
+        "Clean, modern desktop",
         "Feature-rich, customizable",
         "Tiling window manager",
         "Wayland tiling WM",
         "Lightweight, fast",
         "Traditional desktop",
-        "Classic desktop",
-        "Ultra lightweight"
+        "Classic desktop"
     };
-    QStringList colors = {"#2a82da", "#1abc9c", "#e74c3c", "#9b59b6", "#3498db", "#f39c12", "#27ae60", "#95a5a6"};
+    QStringList colors = {"#e74c3c", "#2a82da", "#1abc9c", "#9b59b6", "#3498db", "#f39c12", "#27ae60", "#95a5a6"};
 
     for (int i = 0; i < names.size(); i++) {
         QFrame *card = new QFrame();
@@ -56,7 +56,6 @@ void Desktop::setupUI()
         QVBoxLayout *cardLayout = new QVBoxLayout(card);
 
         QRadioButton *radio = new QRadioButton(names[i]);
-        radio->setStyleSheet("color: white; font-size: 16px; font-weight: bold;");
         radio->setStyleSheet(QString("color: %1; font-size: 16px; font-weight: bold;").arg(colors[i]));
         desktopGroup->addButton(radio, i);
 
@@ -70,6 +69,12 @@ void Desktop::setupUI()
 
         if (i == 0) radio->setChecked(true);
     }
+
+    connect(desktopGroup, QOverload<int, bool>::of(&QButtonGroup::buttonClicked), this, [this](int id) {
+        installer->desktop = desktopGroup->button(id)->text();
+    });
+
+    installer->desktop = "Deepin DDE";
 
     mainLayout->addLayout(grid);
     mainLayout->addStretch();

@@ -16,6 +16,7 @@ class TextEditor;
 class SecurityTools;
 class Terminal;
 class Settings;
+class ForxoStore;
 
 class MainWindow : public QMainWindow
 {
@@ -50,6 +51,7 @@ private:
     SecurityTools *securityTools;
     Terminal *terminal;
     Settings *settingsWidget;
+    ForxoStore *store;
 
     QLabel *statusLabel;
     QLabel *clockLabel;

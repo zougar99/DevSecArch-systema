@@ -1,4 +1,4 @@
-# ~/.bashrc - DevSecArch Bash Configuration
+# ~/.bashrc - ForxoOS Bash Configuration
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -34,21 +34,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
 
-# Aliases - Modern Tools
-alias cat='bat --style=auto --paging=never'
-alias ls='eza --icons --group-directories-first'
-alias ll='eza -la --icons --group-directories-first --git'
-alias lt='eza -T --icons --level=2'
-alias grep='rg'
-alias find='fd'
-alias top='btop'
-alias du='dust'
-alias df='duf'
-alias ps='procs'
-alias sed='sd'
-alias curl='curlie'
-
-# Navigation
+# Aliases
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -83,18 +69,6 @@ alias mirrors='sudo reflector --latest 20 --protocol https --sort rate --save /e
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ports='ss -tulnp'
 alias myip='curl -s ifconfig.me'
-alias linux='neofetch'
 
-# Navigation
-alias devsec='cd ~/Projects/devsec'
-alias dots='cd ~/.config'
-
-# Archinstall
-alias archinstall-gui='sudo archinstall --gui'
-
-# Starship Prompt
-eval "$(starship init bash)"
-
-# Zoxide
-eval "$(zoxide init bash)"
-alias cd='z'
+# Welcome
+echo "Welcome to ForxoOS!"

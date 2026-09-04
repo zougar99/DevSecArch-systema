@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=DevSecArch Installer
-Comment=Install DevSecArch Linux
+Name=ForxoOS Installer
+Comment=Install ForxoOS Linux
 Exec=/usr/bin/archinstall
 Icon=system-software-install
 Terminal=true

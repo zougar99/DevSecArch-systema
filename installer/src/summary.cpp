@@ -31,25 +31,36 @@ void Summary::setupUI()
         "font-size: 14px; padding: 15px; }"
     );
 
+    bool eraseOk = installer->eraseConfirmed;
+    QString eraseColor = eraseOk ? "#2ecc71" : "#e74c3c";
+    QString eraseStatus = eraseOk ? "CONFIRMED" : "NOT CONFIRMED (type ERASE on Disk page)";
+
     QString summary = QString(
-        "<h2 style='color: #2a82da;'>Installation Configuration</h2>"
+        "<h2 style='color: #2a82da;'>ForxoOS Installation</h2>"
         "<hr style='border-color: #333;'>"
         "<p><b style='color: #2a82da;'>Language:</b> %1</p>"
-        "<p><b style='color: #2a82da;'>Keyboard:</b> %2</p>"
-        "<p><b style='color: #2a82da;'>Disk:</b> %3</p>"
-        "<p><b style='color: #2a82da;'>Partitioning:</b> Auto-partition</p>"
-        "<p><b style='color: #2a82da;'>Hostname:</b> %4</p>"
-        "<p><b style='color: #2a82da;'>Username:</b> %5</p>"
-        "<p><b style='color: #2a82da;'>Desktop:</b> %6</p>"
+        "<p><b style='color: #2a82da;'>Locale:</b> %2</p>"
+        "<p><b style='color: #2a82da;'>Keyboard:</b> %3</p>"
+        "<p><b style='color: #2a82da;'>Disk:</b> %4</p>"
+        "<p><b style='color: #2a82da;'>Partitioning:</b> %5</p>"
+        "<p><b style='color: #2a82da;'>Hostname:</b> %6</p>"
+        "<p><b style='color: #2a82da;'>Username:</b> %7</p>"
+        "<p><b style='color: #2a82da;'>Desktop:</b> %8</p>"
         "<hr style='border-color: #333;'>"
+        "<p style='color: %9; font-weight: bold;'>"
+        "ERASE: %10</p>"
         "<p style='color: #e74c3c; font-weight: bold;'>"
-        "WARNING: This will erase all data on the selected disk!</p>"
-    ).arg(installer->language.isEmpty() ? "English" : installer->language)
+        "WARNING: This will erase ALL data on the selected disk!</p>"
+    ).arg(installer->language.isEmpty() ? "English (US)" : installer->language)
+     .arg(installer->locale.isEmpty() ? "en_US.UTF-8" : installer->locale)
      .arg(installer->keyboard.isEmpty() ? "English (US)" : installer->keyboard)
      .arg(installer->disk.isEmpty() ? "/dev/sda" : installer->disk)
-     .arg(installer->hostname.isEmpty() ? "archlinux" : installer->hostname)
-     .arg(installer->username.isEmpty() ? "user" : installer->username)
-     .arg(installer->desktop.isEmpty() ? "GNOME" : installer->desktop);
+     .arg(installer->partitionMode.isEmpty() ? "auto" : installer->partitionMode)
+     .arg(installer->hostname.isEmpty() ? "forxos" : installer->hostname)
+     .arg(installer->username.isEmpty() ? "devsec" : installer->username)
+     .arg(installer->desktop.isEmpty() ? "Deepin DDE" : installer->desktop)
+     .arg(eraseColor)
+     .arg(eraseStatus);
 
     summaryText->setHtml(summary);
     layout->addWidget(summaryText);

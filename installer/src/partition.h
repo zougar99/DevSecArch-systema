@@ -22,6 +22,7 @@ private:
     QRadioButton *autoRadio;
     QRadioButton *manualRadio;
     QRadioButton *swapRadio;
+    QLineEdit *eraseInput;
 };
 
 #endif // PARTITION_H

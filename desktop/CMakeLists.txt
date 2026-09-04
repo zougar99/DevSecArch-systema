@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(DevSecArch-Desktop VERSION 1.0.0 LANGUAGES CXX)
+project(ForxoOS-Desktop VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -7,7 +7,6 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-# Find Qt packages
 find_package(Qt6 REQUIRED COMPONENTS
     Core
     Gui
@@ -20,7 +19,6 @@ find_package(Qt6 REQUIRED COMPONENTS
     Concurrent
 )
 
-# Source files
 set(SOURCES
     src/main.cpp
     src/mainwindow.cpp
@@ -31,9 +29,9 @@ set(SOURCES
     src/terminal.cpp
     src/settings.cpp
     src/about.cpp
+    src/forxostore.cpp
 )
 
-# Header files
 set(HEADERS
     src/mainwindow.h
     src/dashboard.h
@@ -43,21 +41,14 @@ set(HEADERS
     src/terminal.h
     src/settings.h
     src/about.h
+    src/forxostore.h
 )
 
-# Resource files
-set(RESOURCES
-    resources/resources.qrc
-)
-
-# Create executable
 add_executable(${PROJECT_NAME}
     ${SOURCES}
     ${HEADERS}
-    ${RESOURCES}
 )
 
-# Link Qt libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Core
     Qt6::Gui
@@ -70,10 +61,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Concurrent
 )
 
-# Include directories
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
-# Install rules
 install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

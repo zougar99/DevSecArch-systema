@@ -28,8 +28,8 @@ void setDarkTheme(QApplication &app)
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    app.setApplicationName("Arch Linux Installer");
-    app.setOrganizationName("ArchInstall-GUI");
+    app.setApplicationName("ForxoOS Installer");
+    app.setOrganizationName("ForxoOS");
     app.setApplicationVersion("1.0.0");
 
     QFont defaultFont("Segoe UI", 10);

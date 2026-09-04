@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo ""
 echo "  =========================================="
-echo "   DevSecArch Auto-Installer v2.0.0"
+echo "   ForxoOS Auto-Installer v2.0.0"
 echo "  =========================================="
 echo ""
 
@@ -43,10 +43,10 @@ echo "  Done"
 
 echo "[4/8] Configuring system..."
 arch-chroot /mnt /bin/bash -c '
-    echo "devsecarch" > /etc/hostname
+    echo "forxos" > /etc/hostname
     echo "127.0.0.1 localhost" > /etc/hosts
     echo "::1 localhost" >> /etc/hosts
-    echo "127.0.1.1 devsecarch" >> /etc/hosts
+    echo "127.0.1.1 forxos" >> /etc/hosts
 
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime
     hwclock --systohc
@@ -66,7 +66,7 @@ arch-chroot /mnt /bin/bash -c '
 echo "[5/8] Installing bootloader..."
 arch-chroot /mnt /bin/bash -c '
     pacman -S --noconfirm grub efibootmgr os-prober
-    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=DevSecArch
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ForxoOS
     grub-install --target=i386-pc /dev/sda 2>/dev/null || true
     grub-mkconfig -o /boot/grub/grub.cfg
 '
@@ -75,14 +75,16 @@ echo "  Done"
 echo "[6/8] Installing desktop + tools..."
 arch-chroot /mnt /bin/bash -c '
     pacman -S --noconfirm \
-        gnome gnome-tweaks gdm \
+        deepin-desktop-base deepin-session deepin-shell deepin-control-center \
+        deepin-file-manager deepin-terminal deepin-editor deepin-system-monitor \
+        lightdm lightdm-deepin-greeter \
         pipewire pipewire-pulse pipewire-alsa wireplumber \
         alacritty zsh tmux \
-        firefox nautilus \
-        htop btop neofetch \
+        firefox \
+        htop btop \
         qt6-base qt6-wayland cmake
 
-    systemctl enable gdm 2>/dev/null || true
+    systemctl enable lightdm 2>/dev/null || true
     systemctl enable NetworkManager 2>/dev/null || true
     systemctl enable sshd 2>/dev/null || true
 '
@@ -109,7 +111,7 @@ echo ""
 echo "  =========================================="
 echo "   Installation Complete!"
 echo "   Login: devsec / root"
-echo "   Reboot to start DevSecArch"
+echo "   Reboot to start ForxoOS"
 echo "  =========================================="
 echo ""
 echo "  Type: reboot"

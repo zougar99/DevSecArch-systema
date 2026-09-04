@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #===============================================================================
-# DevSecArch - Test Script
+# ForxoOS - Test Script
 # Verifies all tools are installed correctly
 #===============================================================================
 
@@ -44,7 +44,7 @@ check_package() {
 }
 
 echo -e "${CYAN}"
-echo "  DevSecArch Installation Test"
+echo "  ForxoOS Installation Test"
 echo "================================"
 echo -e "${NC}"
 
@@ -56,77 +56,13 @@ check_package sudo
 check_package git
 check_package curl
 check_package wget
-check_package zsh
-check_package tmux
 
 # ── Desktop ────────────────────────────────────────────────────────────
 echo -e "\n${YELLOW}Desktop Environments:${NC}"
-check_package gnome
-check_package plasma-desktop
-check_package i3-wm
-check_package sway
-
-# ── Editors ────────────────────────────────────────────────────────────
-echo -e "\n${YELLOW}Editors:${NC}"
-check_tool code
-check_tool neovim
-check_tool vim
-check_tool helix
-
-# ── Languages ──────────────────────────────────────────────────────────
-echo -e "\n${YELLOW}Languages:${NC}"
-check_tool python3
-check_tool node
-check_tool go
-check_tool rustc
-check_tool java
-check_tool gcc
-check_tool clang
-
-# ── DevOps ─────────────────────────────────────────────────────────────
-echo -e "\n${YELLOW}DevOps:${NC}"
-check_tool docker
-check_tool podman
-check_tool kubectl
-check_tool helm
-check_tool terraform
-check_tool ansible
-
-# ── Cybersecurity ──────────────────────────────────────────────────────
-echo -e "\n${YELLOW}Cybersecurity:${NC}"
-check_tool nmap
-check_tool wireshark
-check_tool aircrack-ng
-check_tool john
-check_tool hashcat
-check_tool hydra
-check_tool nikto
-check_tool sqlmap
-check_tool ffuf
-check_tool gobuster
-check_tool bettercap
-check_tool ghidra
-check_tool radare2
-
-# ── WiFi ───────────────────────────────────────────────────────────────
-echo -e "\n${YELLOW}WiFi Tools:${NC}"
-check_tool iw
-check_tool aircrack-ng
-check_tool reaver
-check_tool kismet
-check_tool macchanger
-check_tool hostapd
-
-# ── Terminal ───────────────────────────────────────────────────────────
-echo -e "\n${YELLOW}Terminal Tools:${NC}"
-check_tool fzf
-check_tool bat
-check_tool exa
-check_tool fd
-check_tool rg
-check_tool starship
-check_tool btop
-check_tool lazygit
+check_package deepin-desktop-base
+check_package deepin-session
+check_package deepin-shell
+check_package lightdm
 
 # ── Summary ────────────────────────────────────────────────────────────
 echo ""

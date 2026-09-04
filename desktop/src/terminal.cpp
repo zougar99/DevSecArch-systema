@@ -13,7 +13,7 @@ Terminal::Terminal(QWidget *parent)
     connect(process, &QProcess::readyReadStandardOutput, this, &Terminal::readOutput);
     connect(process, &QProcess::readyReadStandardError, this, &Terminal::readError);
 
-    appendOutput("<span style='color: #2a82da;'>DevSecArch Terminal v1.0</span>");
+    appendOutput("<span style='color: #2a82da;'>ForxoOS Terminal v1.0</span>");
     appendOutput("<span style='color: #888;'>Type 'help' for commands</span>");
     appendOutput("");
 }

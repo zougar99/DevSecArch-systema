@@ -1,25 +1,25 @@
 #!/bin/bash
-# DevSecArch - Dev Environment Launcher
+# ForxoOS - Dev Environment Launcher
 # Shows project overview + build menu
 
 clear
 echo ""
 echo "  ╔══════════════════════════════════════════╗"
-echo "  ║         DevSecArch Dev Environment       ║"
+echo "  ║         ForxoOS Dev Environment          ║"
 echo "  ╚══════════════════════════════════════════╝"
 echo ""
-echo "  📁 Project Structure:"
+echo "  Project Structure:"
 echo "  ─────────────────────────────────────────"
-echo "  installer/    → Qt 6 GUI Installer (9 pages)"
-echo "  desktop/      → Qt 6 Desktop App"
+echo "  installer/    → Qt6 GUI Installer (9 pages)"
+echo "  desktop/      → Qt6 Desktop App"
 echo "  iso/          → Archiso ISO profile"
-echo "  modules/      → 17 post-install scripts"
-echo "  install.sh    → Main installer"
+echo "  modules/      → Optional post-install scripts"
+echo "  install.sh    → Post-install tool script"
 echo ""
-echo "  🔧 What to develop:"
+echo "  What to develop:"
 echo "  ─────────────────────────────────────────"
-echo "  1) Installer (Qt 6) - 9 wizard pages"
-echo "  2) Desktop App (Qt 6) - Dashboard, Tools"
+echo "  1) Installer (Qt6) - 9 wizard pages"
+echo "  2) Desktop App (Qt6) - Dashboard, Tools"
 echo "  3) ISO Profile - packages, configs"
 echo "  4) Modules - install scripts"
 echo "  5) All"
@@ -44,7 +44,7 @@ case $choice in
     mkdir -p build && cd build
     cmake ..
     make -j$(nproc)
-    echo "  ✅ Built! Run: ./ArchInstall-GUI"
+    echo "  Built! Run: ./ForxoOS-Installer"
     ;;
   2)
     echo ""
@@ -53,7 +53,7 @@ case $choice in
     mkdir -p build && cd build
     cmake ..
     make -j$(nproc)
-    echo "  ✅ Built! Run: ./DevSecArch-Desktop"
+    echo "  Built! Run: ./ForxoOS-Desktop"
     ;;
   3)
     echo ""

@@ -19,6 +19,7 @@ public:
 private slots:
     void updateProgress();
     void readOutput();
+    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
 
 private:
     void setupUI();

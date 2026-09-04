@@ -1,99 +1,79 @@
-# DevSecArch
+# ForxoOS
 
-> Custom Arch Linux with Deepin Desktop - Developer + Security + Everything.
+> Custom Arch Linux with Deepin Desktop - Beautiful, Secure, Fast.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-## What is DevSecArch?
+## What is ForxoOS?
 
-DevSecArch is a **custom Arch Linux distribution** with **Deepin Desktop Environment**. Beautiful like Deepin, powerful like Arch.
+ForxoOS is an **unofficial Arch Linux distribution** with **Deepin Desktop Environment**. Beautiful like Deepin, powerful like Arch.
+
+**Not affiliated with Arch Linux or Deepin.**
 
 ### Features
 
-- **Deepin Desktop (DDE)** - Beautiful, modern desktop
-- **500+ Tools** - Developer, Security, Gaming, Server
-- **Windows Compatibility** - Wine, Proton, run .exe
-- **Gaming** - Steam, Lutris, Proton-GE, MangoHud
-- **Cybersecurity** - 100+ pentest tools
-- **Server/Cloud** - Docker, Kubernetes, Ansible
-- **Auto-Install** - One-click setup
-- **Arabic Support** - Full RTL + Arabic language
-
-## Screenshots
-
-> DevSecArch with Deepin Desktop
+- **Deepin Desktop (DDE)** - Beautiful, modern desktop environment
+- **Deepin Installer** - Qt6 GUI installer (Language, Keyboard, Disk, User, Install)
+- **Minimal ISO** - ~2GB, fast boot, clean install
+- **Wine/Bottles** - Windows app compatibility (optional post-install)
+- **500+ Tools** - Dev, Security, Gaming, Multimedia via ForxoOS Store
+- **Multi-language** - English, Arabic, French + 13 more
+- **ERASE Confirm** - Full disk wipe requires typed confirmation
 
 ## Quick Start
 
 ### Download ISO
 Go to [Releases](https://github.com/zougar99/DevSecArch-systema/releases) and download the latest ISO.
 
-### Burn to USB
-```bash
-# Linux
-sudo dd if=DevSecArch.iso of=/dev/sdX bs=4M status=progress
-
-# Windows - Use Rufus or balenaEtcher
-```
-
 ### Install
-1. Boot from USB
+1. Boot from USB (Secure Boot OFF)
 2. Auto-login as `devsec`
-3. Run installer from desktop
+3. Run ForxoOS Installer from desktop
+4. Select "Erase entire disk" + type ERASE to confirm
+5. Reboot when done
 
 ### Post-Install Tools
 ```bash
-git clone https://github.com/zougar99/DevSecArch-systema.git
-cd DevSecArch-systema
-sudo ./install.sh
+# Open ForxoOS Store from desktop, or:
+forxoinstall
 ```
 
 ## Project Structure
 
 ```
-DevSecArch-systema/
+ForxoOS/
 ├── iso/                    # ISO profile (archiso)
 │   ├── profile/
 │   │   ├── profiledef.sh
 │   │   ├── packages.x86_64
 │   │   └── airootfs/
 │   └── build.sh
-├── modules/                # 19 install modules
-├── installer/              # GUI Installer (Qt 6)
-├── desktop/                # Desktop App (Qt 6)
-├── install.sh              # Post-install script
-└── .github/workflows/      # CI/CD - auto build ISO
+├── installer/              # Qt6 GUI Installer
+├── desktop/                # Qt6 Desktop App + ForxoOS Store
+├── modules/                # Optional post-install scripts
+│   ├── wine-compat.sh      # Wine/Bottles/DXVK
+│   ├── devtools.sh         # Development tools
+│   ├── cybersec.sh         # Cybersecurity tools
+│   └── ...
+├── install.sh              # Post-install tool script
+└── .github/workflows/      # CI/CD
 ```
 
-## Modules
+## Windows App Compatibility
 
-| Module | Description |
-|--------|-------------|
-| desktops.sh | GNOME, KDE, i3, Sway |
-| gpu.sh | NVIDIA, AMD, Intel |
-| devtools.sh | Python, Node, Go, Rust |
-| cybersec.sh | 100+ security tools |
-| wifi.sh | WiFi attack tools |
-| terminal.sh | Zsh, fzf, bat, lazygit |
-| media.sh | FFmpeg, OBS, GIMP |
-| gaming.sh | Steam, Lutris, Proton |
-| privacy.sh | Tor, VPN, UFW |
-| server.sh | Nginx, PostgreSQL |
-| cloud.sh | AWS/GCP, kubectl |
-| docker-tools.sh | Docker, Podman |
+ForxoOS supports running some Windows `.exe` files via Wine/Bottles:
 
-## Requirements
+```bash
+# Install Wine compatibility
+sudo bash modules/wine-compat.sh
 
-- 4GB+ RAM
-- 20GB+ disk space
-- UEFI or BIOS
+# Run .exe files
+forxo-run-exe myapp.exe
+# Or right-click .exe → Open with Wine/Bottles
+```
+
+**Note:** Not all .exe files work (drivers, anti-cheat, .NET desktop apps may fail).
 
 ## License
 
-GPLv3
-
-## Credits
-
-- [Arch Linux](https://archlinux.org)
-- [Deepin](https://www.deepin.org)
-- [Archiso](https://archlinux.org/packages/extra/any/archiso/)
+GPLv3 - Based on Arch Linux

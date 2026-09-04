@@ -5,6 +5,7 @@
 #include "securitytools.h"
 #include "terminal.h"
 #include "settings.h"
+#include "forxostore.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -19,7 +20,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    setWindowTitle("DevSecArch Desktop v1.0.0");
+    setWindowTitle("ForxoOS Desktop v1.0.0");
     setMinimumSize(1200, 800);
     resize(1400, 900);
 
@@ -115,11 +116,13 @@ void MainWindow::setupTabs()
     securityTools = new SecurityTools(this);
     terminal = new Terminal(this);
     settingsWidget = new Settings(this);
+    store = new ForxoStore(this);
 
     tabWidget->addTab(dashboard, "Dashboard");
     tabWidget->addTab(fileManager, "Files");
     tabWidget->addTab(textEditor, "Editor");
     tabWidget->addTab(securityTools, "Security");
+    tabWidget->addTab(store, "Forxo Store");
     tabWidget->addTab(terminal, "Terminal");
 }
 
@@ -153,12 +156,13 @@ void MainWindow::saveFile()
 
 void MainWindow::about()
 {
-    QMessageBox::about(this, "About DevSecArch Desktop",
-        "<h2>DevSecArch Desktop</h2>"
+    QMessageBox::about(this, "About ForxoOS Desktop",
+        "<h2>ForxoOS Desktop</h2>"
         "<p>Version 1.0.0</p>"
-        "<p>Complete desktop environment for developers and cybersecurity professionals.</p>"
+        "<p>Unofficial Arch Linux derivative with Deepin Desktop.</p>"
+        "<p>Not affiliated with Arch Linux or Deepin.</p>"
         "<p>License: GPLv3</p>"
-        "<p>GitHub: github.com/zougar99/arch-devsec-build</p>"
+        "<p>GitHub: github.com/zougar99/DevSecArch-systema</p>"
     );
 }
 

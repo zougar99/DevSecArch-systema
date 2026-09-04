@@ -1,9 +1,9 @@
 services:
-  devsecarch:
+  forxos:
     build: .
-    container_name: devsecarch-dev
+    container_name: forxos-dev
     volumes:
-      - .:/home/devsec/DevSecArch-systema
+      - .:/home/devsec/ForxoOS
     ports:
       - "3000:3000"
     privileged: true

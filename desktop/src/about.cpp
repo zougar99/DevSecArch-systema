@@ -18,7 +18,7 @@ void About::setupUI()
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setAlignment(Qt::AlignCenter);
 
-    QLabel *title = new QLabel("DevSecArch Desktop");
+    QLabel *title = new QLabel("ForxoOS Desktop");
     title->setStyleSheet("font-size: 28px; font-weight: bold; color: #2a82da;");
     title->setAlignment(Qt::AlignCenter);
 
@@ -27,13 +27,13 @@ void About::setupUI()
     version->setAlignment(Qt::AlignCenter);
 
     QLabel *description = new QLabel(
-        "Complete desktop environment for developers and cybersecurity professionals.\n"
-        "Built with Qt 6 and designed for Arch Linux."
+        "Beautiful desktop environment based on Arch Linux with Deepin Desktop.\n"
+        "Unofficial Arch derivative. Not affiliated with Arch Linux or Deepin."
     );
     description->setStyleSheet("font-size: 14px; color: #aaa;");
     description->setAlignment(Qt::AlignCenter);
 
-    QLabel *license = new QLabel("License: GPLv3");
+    QLabel *license = new QLabel("License: GPLv3 | Based on Arch Linux");
     license->setStyleSheet("font-size: 12px; color: #666;");
     license->setAlignment(Qt::AlignCenter);
 

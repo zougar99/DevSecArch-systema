@@ -1,4 +1,4 @@
-# DevSecArch ZSH Config
+# ForxoOS ZSH Config
 export ZSH_THEME="agnoster"
 
 # History
@@ -16,4 +16,4 @@ alias install='sudo pacman -S'
 alias remove='sudo pacman -Rns'
 
 # Welcome
-fastfetch
+echo "Welcome to ForxoOS!"

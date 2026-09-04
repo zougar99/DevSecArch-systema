@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #===============================================================================
-# DevSecArch - Main Installer
+# ForxoOS - Main Installer
 # Run this AFTER fresh Arch Linux install
 #===============================================================================
 
 set -euo pipefail
 
-VERSION="2.0.0"
+VERSION="1.0.0"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -34,8 +34,8 @@ banner() {
     echo " | |__| |  __/\\ V / ____) | | | | (_| |   <  __/ |    "
     echo " |_____/ \\___| \\_/ |_____/|_| |_|\\__,_|_|\\_\\___|_|    "
     echo -e "${NC}"
-    echo -e "${CYAN}  DevSecArch Installer v${VERSION}${NC}"
-    echo -e "${CYAN}  Developer + Security + Everything Linux Distribution${NC}"
+    echo -e "${CYAN}  ForxoOS Installer v${VERSION}${NC}"
+    echo -e "${CYAN}  Deepin Desktop Linux${NC}"
     echo ""
 }
 
@@ -185,7 +185,7 @@ main() {
     detect_hardware
     
     > "$LOG_FILE"
-    log "DevSecArch Installer v${VERSION} started"
+    log "ForxoOS Installer v${VERSION} started"
     log "Hardware: GPU=$GPU CPU=$CPU RAM=${RAM_GB}GB"
     
     choice=$(show_menu)
@@ -213,6 +213,7 @@ main() {
             install_wincompat
             apply_config
             ;;
+        2)
             install_base
             install_desktops
             install_gpu

@@ -1,10 +1,12 @@
-# Contributing to DevSecArch
+# Contributing to ForxoOS
 
-Thanks for your interest in contributing to DevSecArch! This document provides guidelines and information for contributors.
+Thanks for your interest in contributing to ForxoOS! This document provides guidelines and information for contributors.
 
-## What is DevSecArch?
+## What is ForxoOS?
 
-DevSecArch is an open-source Arch Linux-based distribution designed for developers and cybersecurity professionals. It comes pre-configured with development tools, cybersecurity tools, WiFi tools, and multiple desktop environments.
+ForxoOS is an unofficial Arch Linux-based distribution with Deepin Desktop Environment. It comes pre-configured with a beautiful installer and optional post-install tools for developers and security professionals.
+
+**Not affiliated with Arch Linux or Deepin.**
 
 ## How to Contribute
 
@@ -64,40 +66,30 @@ To add a new tool to a module:
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/arch-devsec-build.git
-cd arch-devsec-build
+git clone https://github.com/zougar99/DevSecArch-systema.git
+cd DevSecArch-systema
 
 # Test individual modules
 sudo bash modules/devtools.sh
 
 # Build test ISO
-sudo ./build-iso.sh
+sudo ./iso/build.sh
 ```
 
 ## Project Structure
 
 ```
-arch-devsec-build/
-├── install.sh              # Main installer
-├── build-iso.sh            # ISO builder
+ForxoOS/
+├── install.sh              # Post-install tool script
+├── iso/
+│   ├── profile/            # archiso profile
+│   └── build.sh            # ISO builder
+├── installer/              # Qt6 GUI Installer
+├── desktop/                # Qt6 Desktop App
+├── modules/                # Optional post-install scripts
 ├── LICENSE                 # GPLv3
 ├── README.md               # Project documentation
-├── CONTRIBUTING.md         # This file
-├── modules/
-│   ├── desktops.sh         # Desktop environments
-│   ├── gpu.sh              # GPU drivers
-│   ├── devtools.sh         # Development tools
-│   ├── cybersec.sh         # Cybersecurity tools
-│   ├── wifi.sh             # WiFi tools
-│   ├── terminal.sh         # Terminal tools
-│   └── configs.sh          # System configurations
-├── configs/
-│   └── (config files)
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   └── workflows/
-└── docs/
-    └── (documentation)
+└── CONTRIBUTING.md         # This file
 ```
 
 ## Code Style
@@ -117,12 +109,6 @@ Before submitting a PR:
 3. Test the full installation
 4. Test the ISO build
 5. Verify all tools work
-
-## Community
-
-- GitHub Issues: For bugs and features
-- Discussions: For questions and ideas
-- Discord: Coming soon
 
 ## License
 

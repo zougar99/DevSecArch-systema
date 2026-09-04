@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="DevSecArch"
-iso_version="2026.08.23"
-iso_label="DEVSECARCH_2026"
-iso_publisher="DevSecArch <https://github.com/zougar99/DevSecArch-systema>"
-iso_application="DevSecArch Linux - Deepin Desktop"
+iso_name="ForxoOS"
+iso_version="2026.08.25"
+iso_label="FORXOOS_2026"
+iso_publisher="ForxoOS <https://github.com/zougar99/DevSecArch-systema>"
+iso_application="ForxoOS - Deepin Desktop Linux"
 install_dir="arch"
 bootmodes=("bios.syslinux" "uefi.grub")
 arch="x86_64"

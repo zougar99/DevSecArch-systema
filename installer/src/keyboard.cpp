@@ -42,5 +42,11 @@ void Keyboard::setupUI()
     keyboardList->addItems(keyboards);
     keyboardList->setCurrentRow(0);
 
+    connect(keyboardList, &QListWidget::currentTextChanged, this, [this](const QString &text) {
+        installer->keyboard = text;
+    });
+
+    installer->keyboard = "English (US)";
+
     layout->addWidget(keyboardList);
 }

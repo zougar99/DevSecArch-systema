@@ -13,13 +13,15 @@
 #include <QHBoxLayout>
 #include <QFrame>
 #include <QApplication>
+#include <QMessageBox>
 
 Installer::Installer(QWidget *parent)
     : QMainWindow(parent)
     , currentStep(0)
     , totalSteps(8)
+    , eraseConfirmed(false)
 {
-    setWindowTitle("Arch Linux Installer");
+    setWindowTitle("ForxoOS Installer");
     setFixedSize(900, 600);
     setStyleSheet("QMainWindow { background-color: #1a1a2e; }");
 
@@ -40,14 +42,13 @@ void Installer::setupUI()
     mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
 
-    // Header
     QFrame *header = new QFrame();
     header->setStyleSheet(
         "QFrame { background-color: #16213e; padding: 20px; }"
     );
     QVBoxLayout *headerLayout = new QVBoxLayout(header);
 
-    titleLabel = new QLabel("Arch Linux Installer");
+    titleLabel = new QLabel("ForxoOS Installer");
     titleLabel->setStyleSheet(
         "font-size: 28px; font-weight: bold; color: #2a82da; padding: 10px;"
     );
@@ -60,7 +61,6 @@ void Installer::setupUI()
 
     mainLayout->addWidget(header);
 
-    // Content area
     QFrame *contentFrame = new QFrame();
     contentFrame->setStyleSheet("QFrame { background-color: #1a1a2e; }");
     QVBoxLayout *contentLayout = new QVBoxLayout(contentFrame);
@@ -91,7 +91,6 @@ void Installer::setupUI()
     contentLayout->addWidget(stack);
     mainLayout->addWidget(contentFrame, 1);
 
-    // Footer with buttons
     QFrame *footer = new QFrame();
     footer->setStyleSheet(
         "QFrame { background-color: #16213e; padding: 15px; }"
@@ -127,7 +126,6 @@ void Installer::setupUI()
 
     mainLayout->addWidget(footer);
 
-    // Connections
     connect(nextBtn, &QPushButton::clicked, this, &Installer::nextStep);
     connect(backBtn, &QPushButton::clicked, this, &Installer::prevStep);
     connect(cancelBtn, &QPushButton::clicked, qApp, &QApplication::quit);
@@ -135,6 +133,19 @@ void Installer::setupUI()
 
 void Installer::nextStep()
 {
+    // Step 3 = Partition page. Enforce ERASE confirmation before advancing.
+    if (currentStep == 3 && !eraseConfirmed) {
+        QMessageBox msgBox(this);
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setWindowTitle("ERASE Not Confirmed");
+        msgBox.setText("You must type ERASE on the Disk page before proceeding.");
+        msgBox.setInformativeText("This is a safety measure to prevent accidental data loss.\n\n"
+                                   "Go back and type ERASE in the confirmation field.");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+        return;
+    }
+
     if (currentStep < totalSteps - 1) {
         currentStep++;
         stack->setCurrentIndex(currentStep);

@@ -13,10 +13,10 @@ RUN useradd -m -G wheel -s /bin/zsh devsec && \
     echo "devsec ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Copy project
-COPY . /home/devsec/DevSecArch-systema
+COPY . /home/devsec/ForxoOS
 RUN chown -R devsec:devsec /home/devsec
 
 USER devsec
-WORKDIR /home/devsec/DevSecArch-systema
+WORKDIR /home/devsec/ForxoOS
 
 CMD ["/bin/zsh"]

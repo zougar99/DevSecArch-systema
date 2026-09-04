@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===============================================================================
-# DevSecArch ISO Builder
-# Builds the custom DevSecArch Linux ISO using archiso
+# ForxoOS ISO Builder
+# Builds the custom ForxoOS Linux ISO using archiso
 #===============================================================================
 
 set -euo pipefail
@@ -20,12 +20,9 @@ NC='\033[0m'
 
 banner() {
     echo -e "${CYAN}"
-    echo "  _____              _____              _              "
-    echo " |  __ \\            / ____|            | |             "
-    echo " | |  | | _____   _| (___  _ __   __ _| | _____ _ __  "
-    echo " | |  | |/ _ \\ \\ / /\\___ \\| '_ \\ / _\` | |/ / _ \\ '__| "
-    echo " | |__| |  __/\\ V / ____) | | | | (_| |   <  __/ |    "
-    echo " |_____/ \\___| \\_/ |_____/|_| |_|\\__,_|_|\\_\\___|_|    "
+    echo "  ╔══════════════════════════════════════════╗"
+    echo "  ║           ForxoOS ISO Builder            ║"
+    echo "  ╚══════════════════════════════════════════╝"
     echo -e "${NC}"
     echo -e "${CYAN}  ISO Builder v${VERSION}${NC}"
     echo ""
@@ -59,17 +56,14 @@ check_deps() {
 }
 
 build_iso() {
-    echo -e "${CYAN}[i] Building DevSecArch ISO v${VERSION}...${NC}"
+    echo -e "${CYAN}[i] Building ForxoOS ISO v${VERSION}...${NC}"
     echo ""
     
-    # Clean previous builds
     rm -rf "${WORK_DIR}" "${OUTPUT_DIR}"
     mkdir -p "${WORK_DIR}" "${OUTPUT_DIR}"
     
-    # Build with archiso
     mkarchiso -v -w "${WORK_DIR}" -D "${OUTPUT_DIR}" "${PROFILE_DIR}"
     
-    # Find ISO
     local iso_file
     iso_file=$(find "${OUTPUT_DIR}" -name "*.iso" -type f | head -1)
     
@@ -89,9 +83,9 @@ build_iso() {
         echo "     sudo dd if=${iso_file} of=/dev/sdX bs=4M status=progress"
         echo "     Or use Rufus/balenaEtcher on Windows"
         echo ""
-        echo "  2. Boot from USB"
-        echo "  3. Login: devsec / root"
-        echo "  4. Run: archinstall or archinstall-gui"
+        echo "  2. Boot from USB (Secure Boot OFF)"
+        echo "  3. Auto-login as devsec"
+        echo "  4. Run ForxoOS Installer from desktop"
         echo ""
     else
         echo -e "${RED}[x] ISO build failed!${NC}"
@@ -109,7 +103,7 @@ main() {
     check_root
     check_deps
     
-    echo -e "${CYAN}Build DevSecArch ISO v${VERSION}${NC}"
+    echo -e "${CYAN}Build ForxoOS ISO v${VERSION}${NC}"
     echo ""
     read -p "Continue? [Y/n]: " confirm
     confirm=${confirm:-Y}
