@@ -6,6 +6,10 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QScrollArea>
+#include <QProcess>
+#include <QRegularExpression>
+#include <QListWidgetItem>
+#include <QColor>
 
 struct PackageInfo {
     QString name;
@@ -73,12 +77,6 @@ ForxoStore::ForxoStore(QWidget *parent)
 {
     setupUI();
     process = new QProcess(this);
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            this, [this](int, QProcess::ExitStatus) {
-        progressBar->setValue(100);
-        statusLabel->setText("Operation complete!");
-        refreshPackages();
-    });
 }
 
 void ForxoStore::setupUI()
@@ -181,55 +179,122 @@ void ForxoStore::setupUI()
 void ForxoStore::showCategory(const QString &category)
 {
     currentCategory = category;
-    loadPackages();
+}
+
+QStringList ForxoStore::getInstalledPackages()
+{
+    QStringList result;
+    QProcess proc;
+    proc.start("bash", {"-c", "pacman -Qq 2>/dev/null"});
+    proc.waitForFinished(3000);
+    QString output = proc.readAllStandardOutput();
+    for (const QString &line : output.split('\n', Qt::SkipEmptyParts)) {
+        result << line.trimmed().toLower();
+    }
+    return result;
 }
 
 void ForxoStore::loadPackages()
 {
     packageList->clear();
-    for (const auto &pkg : allPackages) {
+
+    QStringList installed = getInstalledPackages();
+
+    for (auto &pkg : allPackages) {
+        pkg.installed = installed.contains(pkg.pacmanName.toLower());
+
         if (currentCategory == "All" || pkg.category == currentCategory) {
-            QString status = pkg.installed ? "[Installed]" : "[Available]";
-            packageList->addItem(QString("%1 %2 - %3").arg(status, pkg.name, pkg.description));
+            QString status = pkg.installed ? "[Installed] " : "";
+            QString color = pkg.installed ? "#2ecc71" : "#ccc";
+            QString itemText = QString("%1%2 - %3")
+                .arg(status, pkg.name, pkg.description);
+
+            QListWidgetItem *item = new QListWidgetItem(itemText);
+            item->setForeground(QColor(color));
+            item->setData(Qt::UserRole, pkg.pacmanName);
+            item->setData(Qt::UserRole + 1, pkg.name);
+            packageList->addItem(item);
         }
     }
 }
 
 void ForxoStore::installPackage()
 {
-    int row = packageList->currentRow();
-    if (row < 0) return;
-
-    QString text = packageList->item(row)->text();
-    for (auto &pkg : allPackages) {
-        if (text.contains(pkg.name)) {
-            progressBar->setVisible(true);
-            statusLabel->setText("Installing " + pkg.name + "...");
-            runCommand("sudo pacman -S --needed --noconfirm " + pkg.pacmanName);
-            return;
-        }
+    QListWidgetItem *sel = packageList->currentItem();
+    if (!sel) {
+        statusLabel->setText("Select a package first");
+        return;
     }
+
+    QString pkgName = sel->data(Qt::UserRole + 1).toString();
+    QString pac = sel->data(Qt::UserRole).toString();
+
+    int ret = QMessageBox::question(this, "Install",
+        QString("Install %1?\n\nThis will run: sudo pacman -S %2")
+            .arg(pkgName, pac),
+        QMessageBox::Yes | QMessageBox::No);
+    if (ret != QMessageBox::Yes) return;
+
+    progressBar->setRange(0, 0);
+    progressBar->setVisible(true);
+    statusLabel->setText("Installing " + pkgName + "...");
+    progressBar->setValue(0);
+
+    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this,
+        [this, pkgName](int code, QProcess::ExitStatus) {
+        progressBar->setVisible(false);
+        if (code == 0) {
+            statusLabel->setText(pkgName + " installed successfully!");
+        } else {
+            statusLabel->setText("Failed to install " + pkgName + " (exit: " + QString::number(code) + ")");
+        }
+        loadPackages();
+    }, Qt::UniqueConnection);
+
+    QString redirect = "2>&1 </dev/null";
+    runCommand("sudo pacman -S --needed --noconfirm " + pac + " " + redirect);
 }
 
 void ForxoStore::removePackage()
 {
-    int row = packageList->currentRow();
-    if (row < 0) return;
-
-    QString text = packageList->item(row)->text();
-    for (auto &pkg : allPackages) {
-        if (text.contains(pkg.name)) {
-            progressBar->setVisible(true);
-            statusLabel->setText("Removing " + pkg.name + "...");
-            runCommand("sudo pacman -Rns --noconfirm " + pkg.pacmanName);
-            return;
-        }
+    QListWidgetItem *sel = packageList->currentItem();
+    if (!sel) {
+        statusLabel->setText("Select a package first");
+        return;
     }
+
+    QString pkgName = sel->data(Qt::UserRole + 1).toString();
+    QString pac = sel->data(Qt::UserRole).toString();
+
+    int ret = QMessageBox::question(this, "Remove",
+        QString("Remove %1?\n\nThis will run: sudo pacman -Rns %2")
+            .arg(pkgName, pac),
+        QMessageBox::Yes | QMessageBox::No);
+    if (ret != QMessageBox::Yes) return;
+
+    progressBar->setRange(0, 0);
+    progressBar->setVisible(true);
+    statusLabel->setText("Removing " + pkgName + "...");
+
+    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this,
+        [this, pkgName](int code, QProcess::ExitStatus) {
+        progressBar->setVisible(false);
+        if (code == 0) {
+            statusLabel->setText(pkgName + " removed.");
+        } else {
+            statusLabel->setText("Failed to remove " + pkgName);
+        }
+        loadPackages();
+    }, Qt::UniqueConnection);
+
+    QString redirect = "2>&1 </dev/null";
+    runCommand("sudo pacman -Rns --noconfirm " + pac + " " + redirect);
 }
 
 void ForxoStore::refreshPackages()
 {
     loadPackages();
+    statusLabel->setText("Refreshed");
 }
 
 void ForxoStore::runCommand(const QString &cmd)

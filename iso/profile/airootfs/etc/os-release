@@ -1,0 +1,11 @@
+# ForxoOS - Arch Linux derivative
+NAME="ForxoOS"
+PRETTY_NAME="ForxoOS (Arch Linux)"
+ID="forxos"
+ID_LIKE="arch"
+BUILD_ID="rolling"
+ANSI_COLOR="38;2;42;130;218"
+HOME_URL="https://github.com/zougar99/DevSecArch-systema"
+SUPPORT_URL="https://github.com/zougar99/DevSecArch-systema/issues"
+BUG_REPORT_URL="https://github.com/zougar99/DevSecArch-systema/issues"
+LOGO="forxos"

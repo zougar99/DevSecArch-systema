@@ -1,16 +1,20 @@
-  _____  _____ ______  _____ ______ 
- |  __ \|  __ \|  ____|/ ____/ __ \ 
- | |  | | |  | | |__  | (___| |  | |
- | |  | | |  | |  __|  \___ \| |  | |
- | |__| | |__| | |____ ____) | |__| |
- |_____/|_____/|______|_____/ \____/ 
-                                     
-   Deepin Desktop Linux
-   Version 1.0.0
+  ______                    ______   ____  
+ |  ____|                  / ____ \ |  _ \ 
+ | |__     ___   _ __  __ | |  | | | |_) |
+ |  __|   / _ \ | '__|/ _ \| |  | | |  _ < 
+ | |     |  __/ | |  | (_) | |__| | | |_) |
+ |_|      \___| |_|   \___/ \_____/  |____/
+                                    
+   ForxoOS - Arch Linux + Deepin Desktop
+   Version 2.0.0 (Rolling)
 
    Quick Start:
-   - Run 'forxoinstall' to install tools
+   - Open ForxoOS Store from desktop to install apps
+   - Run 'forxoinstall' to install tools from terminal
    - Run 'forxoupdate' to update system
-   - Run 'forxohelp' for help
+   - Double-click .exe files to run via Wine/Bottles
 
-   Default: user=devsec pass=root
+   OS: ForxoOS (Arch Linux) - Unofficial Arch derivative
+   Desktop: Deepin DDE
+
+   Default live user: devsec

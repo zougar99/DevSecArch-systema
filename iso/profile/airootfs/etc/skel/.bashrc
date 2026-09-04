@@ -60,7 +60,7 @@ alias dki='docker images'
 alias dkrm='docker rm -f'
 alias dkc='docker compose'
 
-# System
+# System aliases
 alias update='sudo pacman -Syu'
 alias install='sudo pacman -S'
 alias remove='sudo pacman -Rns'
@@ -69,6 +69,12 @@ alias mirrors='sudo reflector --latest 20 --protocol https --sort rate --save /e
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ports='ss -tulnp'
 alias myip='curl -s ifconfig.me'
+
+# ForxoOS shortcuts
+alias forxoinstall='install.sh'
+alias forxoupdate='sudo pacman -Syu'
+alias forxostore='forxo-store'
+alias run-exe='forxo-run-exe'
 
 # Welcome
 echo "Welcome to ForxoOS!"

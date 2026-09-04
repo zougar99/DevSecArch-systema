@@ -9,7 +9,14 @@
 #include <QTimer>
 #include <QChartView>
 #include <QLineSeries>
-#include <QVBoxLayout>
+#include <QStorageInfo>
+#include <QColor>
+#include <QString>
+
+struct NetStats {
+    qulonglong rxBytes;
+    qulonglong txBytes;
+};
 
 class Dashboard : public QWidget
 {
@@ -29,12 +36,19 @@ private:
     void createMemoryCard();
     void createDiskCard();
     void createNetworkCard();
+    void createGPUCard();
     void createQuickActionsCard();
+
+    QString formatSize(double bytes);
+    QColor usageColor(int percent);
 
     QLabel *cpuLabel;
     QLabel *memoryLabel;
     QLabel *diskLabel;
     QLabel *networkLabel;
+    QLabel *gpuInfoLabel;
+    QLabel *hostnameLabel;
+    QLabel *kernelLabel;
     QLabel *uptimeLabel;
     QLabel *processLabel;
 
@@ -45,7 +59,13 @@ private:
     QChartView *cpuChart;
     QLineSeries *cpuSeries;
 
+    QLabel *memDetail;
+    QLabel *diskDetail;
+
     QTimer *updateTimer;
+
+    NetStats prevNet;
+    bool hasPrevNet;
 };
 
 #endif // DASHBOARD_H

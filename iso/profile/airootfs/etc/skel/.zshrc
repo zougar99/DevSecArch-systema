@@ -15,5 +15,11 @@ alias update='sudo pacman -Syu'
 alias install='sudo pacman -S'
 alias remove='sudo pacman -Rns'
 
+# ForxoOS shortcuts
+alias forxoinstall='install.sh'
+alias forxoupdate='sudo pacman -Syu'
+alias forxostore='forxo-store'
+alias run-exe='forxo-run-exe'
+
 # Welcome
 echo "Welcome to ForxoOS!"

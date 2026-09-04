@@ -9,6 +9,7 @@
 #include <QPushButton>
 #include <QProcess>
 #include <QScrollArea>
+#include <QStringList>
 
 class ForxoStore : public QWidget
 {
@@ -27,6 +28,7 @@ private:
     void setupUI();
     void loadPackages();
     void runCommand(const QString &cmd);
+    QStringList getInstalledPackages();
 
     QListWidget *categoryList;
     QListWidget *packageList;
