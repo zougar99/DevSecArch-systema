@@ -1,4 +1,5 @@
 #include "terminal.h"
+#include <QDir>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>

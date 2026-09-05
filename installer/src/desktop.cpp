@@ -70,7 +70,7 @@ void Desktop::setupUI()
         if (i == 0) radio->setChecked(true);
     }
 
-    connect(desktopGroup, QOverload<int, bool>::of(&QButtonGroup::buttonClicked), this, [this](int id) {
+    connect(desktopGroup, QOverload<int>::of(&QButtonGroup::buttonClicked), this, [this](int id) {
         installer->desktop = desktopGroup->button(id)->text();
     });
 
